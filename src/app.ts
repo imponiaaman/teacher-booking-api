@@ -1,0 +1,14 @@
+import express from "express";
+import userRoutes from "./routes/userRoutes";
+import sessionRoutes from "./routes/sessionRoutes";
+import teacherRoutes from "./routes/teacherRoutes";
+import { notFound } from "./middleware/notFound";
+import { errorHandler } from "./middleware/errorHandler";
+const app = express();
+app.use(express.json());
+app.use("/users", userRoutes);
+app.use("/teachers", teacherRoutes);
+app.use("/sessions", sessionRoutes);
+app.use(notFound);
+app.use(errorHandler);
+export default app;
